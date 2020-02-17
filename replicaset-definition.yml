@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replicaset
+  labels:
+    app: dev-set
+    type: backend
+spec:
+  selector:
+    matchLabels:
+      type: cash-service
+  template:
+    metadata:
+      name: my-app
+      labels:
+        type: cash-service
+    spec:
+      containers:
+        - name: nginx-controller
+          image: nginx
+  replicas: 5
